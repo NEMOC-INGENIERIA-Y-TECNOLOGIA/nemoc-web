@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEMOC Ingeniería y Tecnología</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <style>
     body {
       margin: 0;
@@ -63,38 +61,27 @@
       padding: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;
-      background-color: #f9f9f9;
-      transition: transform 0.3s ease;
-    }
-    .service:hover {
-      transform: translateY(-5px);
     }
     .contact {
       text-align: center;
     }
     .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
       background-color: #25D366;
       color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 50px;
+      padding: 1rem 2rem;
+      border-radius: 30px;
       text-decoration: none;
       font-size: 1.2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      display: inline-block;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo NEMOC" />
+    <div>
+      <img src="logo.png" alt="NEMOC">
+    </div>
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
@@ -103,51 +90,45 @@
     </nav>
   </header>
 
-  <section class="hero" id="inicio" data-aos="fade-down">
+  <section class="hero" id="inicio">
     <h1>NEMOC INGENIERÍA Y TECNOLOGÍA</h1>
     <p>Innovando con precisión y energía</p>
   </section>
 
-  <section class="section" id="servicios" data-aos="fade-up">
+  <section class="section" id="servicios">
     <h2>Servicios Profesionales</h2>
     <div class="services">
-      <div class="service" data-aos="zoom-in">
+      <div class="service">
         <h3>Ingeniería Eléctrica</h3>
         <p>Diseño y montaje de subestaciones, puesta a tierra y automatización.</p>
       </div>
-      <div class="service" data-aos="zoom-in">
+      <div class="service">
         <h3>Telecomunicaciones</h3>
         <p>Redes, cableado estructurado, configuración de equipos y soporte.</p>
       </div>
-      <div class="service" data-aos="zoom-in">
+      <div class="service">
         <h3>Ingeniería Biomédica</h3>
         <p>Mantenimiento y validación de equipos médicos. Registro INVIMA.</p>
       </div>
-      <div class="service" data-aos="zoom-in">
+      <div class="service">
         <h3>Formación Técnica</h3>
         <p>Cursos de energía, electrónica, calidad y mantenimiento.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="sobre-mi" data-aos="fade-right">
+  <section class="section" id="sobre-mi">
     <h2>Sobre mí</h2>
     <p>Soy Néstor Enrique Moreno Caro, Ingeniero Electrónico y Especialista en Gerencia de Proyectos. Cuento con experiencia en telecomunicaciones, biomédica, energía y docencia técnica. Mi compromiso es brindar soluciones integrales, confiables y con altos estándares de calidad.</p>
   </section>
 
-  <section class="section contact" id="contacto" data-aos="fade-left">
+  <section class="section contact" id="contacto">
     <h2>Contáctame</h2>
     <p>¿Interesado en mis servicios? ¡Hablemos por WhatsApp!</p>
+    <a class="whatsapp" href="https://wa.me/573185621097?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20profesionales.%20%C2%BFPodr%C3%ADa%20brindarme%20m%C3%A1s%20informaci%C3%B3n?" target="_blank">
+      📱 Escríbeme por WhatsApp
+    </a>
     <p>Email: nemoca1004@gmail.com | Tel: +57 318 562 1097</p>
   </section>
-
-  <a class="whatsapp" href="https://wa.me/573185621097?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20profesionales.%20%C2%BFPodr%C3%ADa%20brindarme%20m%C3%A1s%20informaci%C3%B3n?" target="_blank">
-    📱 WhatsApp
-  </a>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 </body>
 </html>
