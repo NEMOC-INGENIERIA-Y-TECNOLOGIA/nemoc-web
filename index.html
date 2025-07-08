@@ -1,90 +1,14 @@
 
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEMOC Ingeniería y Tecnología</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f8;
-      color: #333;
-    }
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header img {
-      height: 60px;
-    }
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      background-color: #0057a0;
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .hero h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-    }
-    .section {
-      padding: 2rem;
-      background-color: white;
-      margin: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .section h2 {
-      color: #0057a0;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .service {
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: #f9fcff;
-    }
-    .contact {
-      text-align: center;
-    }
-    .whatsapp {
-      background-color: #25D366;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      display: inline-block;
-      margin-top: 1rem;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <div>
-      <img src="logo_display.png" alt="Logo NEMOC" />
-    </div>
+    <img src="logo_display.png" alt="Logo NEMOC" style="height:60px;">
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
@@ -92,50 +16,28 @@
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
-
-  <section class="hero" id="inicio">
+  <section id="inicio">
     <h1>NEMOC INGENIERÍA Y TECNOLOGÍA</h1>
     <p>Innovando con precisión y energía</p>
   </section>
-
-  <section class="section" id="servicios">
+  <section id="servicios">
     <h2>Servicios Profesionales</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Ingeniería Eléctrica</h3>
-        <p>Diseño y montaje de subestaciones, puesta a tierra y automatización.</p>
-      </div>
-      <div class="service">
-        <h3>Telecomunicaciones</h3>
-        <p>Redes, cableado estructurado, configuración de equipos y soporte.</p>
-      </div>
-      <div class="service">
-        <h3>Ingeniería Biomédica</h3>
-        <p>Mantenimiento y validación de equipos médicos. Registro INVIMA.</p>
-      </div>
-      <div class="service">
-        <h3>Formación Técnica</h3>
-        <p>Cursos de energía, electrónica, calidad y mantenimiento.</p>
-      </div>
-      <div class="service">
-        <h3>Suministros Tecnológicos</h3>
-        <p>Provisión de equipos tecnológicos, herramientas de red y material eléctrico certificado.</p>
-      </div>
-    </div>
+    <ul>
+      <li>Ingeniería Eléctrica</li>
+      <li>Telecomunicaciones</li>
+      <li>Ingeniería Biomédica</li>
+      <li>Formación Técnica</li>
+      <li>Suministro de equipos tecnológicos y material eléctrico</li>
+    </ul>
   </section>
-
-  <section class="section" id="sobre-mi">
+  <section id="sobre-mi">
     <h2>Sobre mí</h2>
-    <p>Soy Néstor Enrique Moreno Caro, Ingeniero Electrónico y Especialista en Gerencia de Proyectos. Cuento con experiencia en telecomunicaciones, biomédica, energía y docencia técnica. Mi compromiso es brindar soluciones integrales, confiables y con altos estándares de calidad.</p>
+    <p>Soy Néstor Enrique Moreno Caro, Ingeniero Electrónico y Especialista en Gerencia de Proyectos...</p>
   </section>
-
-  <section class="section contact" id="contacto">
-    <h2>Contáctame</h2>
-    <p>¿Interesado en mis servicios? ¡Hablemos por WhatsApp!</p>
-    <a class="whatsapp" href="https://wa.me/573185621097?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20profesionales.%20%C2%BFPodr%C3%ADa%20brindarme%20m%C3%A1s%20informaci%C3%B3n?" target="_blank">
-      📱 Escríbeme por WhatsApp
-    </a>
-    <p>Email: nemoca1004@gmail.com | Tel: +57 318 562 1097</p>
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Email: nemoca1004@gmail.com</p>
+    <p>WhatsApp: +57 318 562 1097</p>
   </section>
 </body>
 </html>
