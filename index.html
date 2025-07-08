@@ -1,59 +1,475 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NEMOC Ingeniería y Tecnología</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #ffffff; }
-    header { background-color: #003366; color: white; padding: 20px; text-align: center; }
-    section { padding: 40px 20px; }
-    h2 { color: #003366; }
-    ul { font-size: 16px; line-height: 1.8; color: #333; }
-    a.boton { padding: 10px 20px; background-color: #007B5E; color: white; text-decoration: none; border-radius: 5px; }
-    footer { background-color: #003366; color: white; text-align: center; padding: 10px; font-size: 14px; }
+    /* Reset y base */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      overflow-x: hidden;
+      scroll-behavior: smooth; /* Scroll suave */
+    }
+
+    /* Header */
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: none;
+      transition: box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      background-color: #002244;
+    }
+    header img {
+      height: 60px;
+    }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #25D366;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #25D366;
+      transition: width 0.3s;
+    }
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      background-color: #0057a0;
+      color: white;
+      padding: 4rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideIn 1s forwards ease-out;
+      animation-delay: 0.3s;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideIn 1s forwards ease-out;
+      animation-delay: 0.7s;
+      font-weight: 600;
+      font-style: italic;
+    }
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Secciones */
+    .section {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2.5rem 2rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section h2 {
+      color: #0057a0;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      border-bottom: 3px solid #25D366;
+      padding-bottom: 0.3rem;
+      max-width: max-content;
+    }
+
+    /* Servicios Grid */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+    .service {
+      padding: 1.8rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,87,160,0.12);
+      background-color: #f9fcff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      position: relative;
+    }
+    .service:hover {
+      box-shadow: 0 10px 25px rgba(0,87,160,0.3);
+      transform: translateY(-8px);
+    }
+    .service h3 {
+      margin-top: 0;
+      color: #003366;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+    }
+    /* Iconos simples SVG al lado de título */
+    .service h3 svg {
+      width: 24px;
+      height: 24px;
+      fill: #25D366;
+      flex-shrink: 0;
+    }
+    .service p {
+      color: #555;
+      line-height: 1.4;
+      font-size: 1rem;
+    }
+
+    /* Contacto */
+    .contact {
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+    .whatsapp {
+      background-color: #25D366;
+      color: white;
+      padding: 1.1rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.3rem;
+      display: inline-block;
+      margin-top: 1.4rem;
+      box-shadow: 0 0 15px #25D366;
+      animation: pulse 2.5s infinite;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      position: relative;
+    }
+    .whatsapp:hover,
+    .whatsapp:focus {
+      box-shadow: 0 0 30px #1ebe5a, 0 0 45px #25d366;
+      transform: scale(1.05);
+    }
+    /* Tooltip */
+    .whatsapp[title]:hover::after {
+      content: attr(title);
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #25D366;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      opacity: 1;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    /* Animación pulso botón WhatsApp */
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 15px #25D366;
+      }
+      50% {
+        box-shadow: 0 0 30px #1ebe5a, 0 0 45px #25d366;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    footer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    footer p {
+      margin: 0.3rem 0;
+    }
+    footer a {
+      color: #25D366;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 0.8rem;
+      transition: color 0.3s ease;
+    }
+    footer a:hover,
+    footer a:focus {
+      color: #7fe8a9;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        display: none;
+      }
+      header {
+        justify-content: space-between;
+        padding: 1rem 1.2rem;
+      }
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 1.8rem;
+        user-select: none;
+        color: white;
+      }
+      nav.active {
+        display: flex;
+        flex-direction: column;
+        background-color: #003366;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 1rem 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+      nav.active a {
+        margin: 1rem 0;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+      .services {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Menu toggle (hamburger) oculto inicialmente */
+    .menu-toggle {
+      display: none;
+    }
+
+    /* Botón Volver Arriba */
+    #btnTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 0.9rem 1.2rem;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 0 15px #25D366;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 10000;
+    }
+    #btnTop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #btnTop:hover,
+    #btnTop:focus {
+      box-shadow: 0 0 30px #1ebe5a, 0 0 45px #25d366;
+      transform: scale(1.1);
+      outline: none;
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>NEMOC Ingeniería y Tecnología</h1>
-  <p>Soluciones en ingeniería, automatización, telecomunicaciones y energía</p>
-</header>
+  <header id="header">
+    <div>
+      <img src="logo.png" alt="Logo NEMOC" />
+    </div>
+    <div class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</div>
+    <nav id="navMenu" role="navigation" aria-label="Menú principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
 
-<section id="servicios">
-  <div style="max-width: 1000px; margin: auto;">
-    <h2 style="text-align: center;">Nuestros Servicios</h2>
-    <ul>
-      <li>✅ Mantenimiento biomédico y diagnóstico técnico especializado</li>
-      <li>✅ Diseño y montaje de sistemas eléctricos y automatizados</li>
-      <li>✅ Instalación y configuración de redes, telecomunicaciones y CCTV</li>
-      <li>✅ Energías renovables: diseño e instalación de sistemas solares</li>
-      <li>✅ Servicios de docencia técnica y formación profesional</li>
-      <li>✅ Asesoría en sistemas de gestión de calidad ISO 9001:2015</li>
-      <li>✅ <strong>Suministro de equipos tecnológicos y material eléctrico</strong></li>
-    </ul>
-    <p style="text-align: center; margin-top: 30px;">
-      <a href="#contacto" class="boton">Contáctanos</a>
+  <section class="hero" id="inicio" tabindex="-1" aria-label="Sección principal">
+    <h1>NEMOC INGENIERÍA Y TECNOLOGÍA</h1>
+    <p>Innovando con precisión y energía</p>
+  </section>
+
+  <section class="section" id="servicios" tabindex="-1" aria-label="Servicios profesionales">
+    <h2>Servicios Profesionales</h2>
+    <div class="services">
+      <div class="service" tabindex="0">
+        <h3>
+          <!-- Icono Eléctrico -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7 2L3 14h4l-1 8 10-12h-4l1-8z"/>
+          </svg>
+          Ingeniería Eléctrica
+        </h3>
+        <p>Diseño y montaje de subestaciones, puesta a tierra y automatización.</p>
+      </div>
+      <div class="service" tabindex="0">
+        <h3>
+          <!-- Icono Redes -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19 12c0-1.1-.9-2-2-2h-2v-2h-2v2H9c-1.1 0-2 .9-2 2s.9 2 2 2h2v2h2v-2h2c1.1 0 2-.9 2-2z"/>
+          </svg>
+          Telecomunicaciones
+        </h3>
+        <p>Redes, cableado estructurado, configuración de equipos y soporte.</p>
+      </div>
+      <div class="service" tabindex="0">
+        <h3>
+          <!-- Icono Biomédico -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          Ingeniería Biomédica
+        </h3>
+        <p>Mantenimiento y validación de equipos médicos. Registro INVIMA.</p>
+      </div>
+      <div class="service" tabindex="0">
+        <h3>
+          <!-- Icono Formación -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+          </svg>
+          Formación Técnica
+        </h3>
+        <p>Cursos de energía, electrónica, calidad y mantenimiento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sobre-mi" tabindex="-1" aria-label="Sobre mí">
+    <h2>Sobre mí</h2>
+    <p>
+      Soy Néstor Enrique Moreno Caro, Ingeniero Electrónico y Especialista en Gerencia de Proyectos.
+      Cuento con experiencia en telecomunicaciones, biomédica, energía y docencia técnica.
+      Mi compromiso es brindar soluciones integrales, confiables y con altos estándares de calidad.
     </p>
-  </div>
-</section>
+  </section>
 
-<section id="contacto" style="background-color: #f2f2f2;">
-  <div style="max-width: 1000px; margin: auto;">
-    <h2 style="text-align: center;">Contacto</h2>
-    <p style="text-align: center;">
-      📧 Correo: nemoca1004@gmail.com<br>
-      📞 Teléfono: +57 318 562 1097<br>
-      📍 Dirección: Calle 45 #35-36, Barrio Líbano – Santa Marta, Colombia
+  <section class="section contact" id="contacto" tabindex="-1" aria-label="Contacto">
+    <h2>Contáctame</h2>
+    <p>¿Interesado en mis servicios? ¡Hablemos por WhatsApp!</p>
+    <a
+      class="whatsapp"
+      href="https://wa.me/573185621097?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20profesionales.%20%C2%BFPodr%C3%ADa%20brindarme%20m%C3%A1s%20informaci%C3%B3n?"
+      target="_blank"
+      rel="noopener"
+      title="Haz clic para enviar un mensaje por WhatsApp"
+      >📱 Escríbeme por WhatsApp</a
+    >
+    <p>Email: nemoca1004@gmail.com | Tel: +57 318 562 1097</p>
+  </section>
+
+  <!-- Botón Volver Arriba -->
+  <button id="btnTop" aria-label="Volver arriba" title="Volver al inicio">⬆️</button>
+
+  <!-- Footer -->
+  <footer id="footer" aria-label="Pie de página">
+    <p>© 2025 NEMOC Ingeniería y Tecnología. Todos los derechos reservados.</p>
+    <p>
+      <a href="https://wa.me/573185621097" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a> |
+      <a href="mailto:nemoca1004@gmail.com" aria-label="Correo electrónico">Email</a>
     </p>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  © 2025 NEMOC Ingeniería y Tecnología. Todos los derechos reservados.
-</footer>
+  <script>
+    // Animar secciones al hacer scroll
+    function revealSections() {
+      const sections = document.querySelectorAll('.section, footer');
+      const windowHeight = window.innerHeight;
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < windowHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections);
 
+    // Header sombra al hacer scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Menu toggle para móvil
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Botón Volver Arriba
+    const btnTop = document.getElementById('btnTop');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 300) {
+        btnTop.classList.add('show');
+      } else {
+        btnTop.classList.remove('show');
+      }
+    });
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
