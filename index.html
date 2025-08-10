@@ -4,21 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NEMOC Ingeniería y Tecnología</title>
+  <meta name="description" content="NEMOC Ingeniería y Tecnología ofrece soluciones multiservicios integrales en electricidad, telecomunicaciones, biomédica, formación técnica y más. Calidad, eficiencia y compromiso." />
   <style>
+    /* Variables CSS para colores */
+    :root {
+      --color-primario: #003366;
+      --color-primario-oscuro: #002244;
+      --color-secundario: #25D366;
+      --color-secundario-claro: #7fe8a9;
+      --color-fondo: #f4f6f8;
+      --color-texto: #333;
+      --color-blanco: #fff;
+    }
+
     /* Reset y base */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f8;
-      color: #333;
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
       overflow-x: hidden;
       scroll-behavior: smooth; /* Scroll suave */
+      line-height: 1.6;
     }
 
     /* Header */
     header {
-      background-color: #003366;
-      color: white;
+      background-color: var(--color-primario);
+      color: var(--color-blanco);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -27,17 +40,17 @@
       top: 0;
       z-index: 1000;
       box-shadow: none;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, background-color 0.3s ease;
     }
     header.scrolled {
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      background-color: #002244;
+      background-color: var(--color-primario-oscuro);
     }
     header img {
       height: 60px;
     }
     nav a {
-      color: white;
+      color: var(--color-blanco);
       margin-left: 20px;
       text-decoration: none;
       font-weight: 600;
@@ -47,7 +60,8 @@
     }
     nav a:hover,
     nav a:focus {
-      color: #25D366;
+      color: var(--color-secundario);
+      outline: none;
     }
     nav a::after {
       content: '';
@@ -56,12 +70,22 @@
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: #25D366;
+      background-color: var(--color-secundario);
       transition: width 0.3s;
     }
     nav a:hover::after,
     nav a:focus::after {
       width: 100%;
+    }
+    nav a:focus-visible {
+      outline: 3px solid var(--color-secundario);
+      outline-offset: 2px;
+    }
+
+    /* Envolver logo en link para accesibilidad y SEO */
+    .logo-link {
+      display: inline-block;
+      line-height: 0;
     }
 
     /* Hero */
@@ -75,7 +99,7 @@
     }
     .hero h1 {
       margin: 0;
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       opacity: 0;
       transform: translateY(30px);
       animation: fadeSlideIn 1s forwards ease-out;
@@ -84,7 +108,7 @@
       text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
     }
     .hero p {
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 2vw, 1.3rem);
       margin-top: 1rem;
       opacity: 0;
       transform: translateY(30px);
@@ -105,7 +129,7 @@
       max-width: 1100px;
       margin: 2rem auto;
       padding: 2.5rem 2rem;
-      background-color: white;
+      background-color: var(--color-blanco);
       border-radius: 10px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       opacity: 0;
@@ -120,7 +144,7 @@
       color: #0057a0;
       margin-bottom: 1.5rem;
       font-size: 2rem;
-      border-bottom: 3px solid #25D366;
+      border-bottom: 3px solid var(--color-secundario);
       padding-bottom: 0.3rem;
       max-width: max-content;
     }
@@ -140,13 +164,19 @@
       cursor: default;
       position: relative;
     }
-    .service:hover {
+    .service:hover,
+    .service:focus-visible {
       box-shadow: 0 10px 25px rgba(0,87,160,0.3);
       transform: translateY(-8px);
+      outline: none;
+    }
+    .service:focus-visible {
+      outline: 3px solid var(--color-secundario);
+      outline-offset: 4px;
     }
     .service h3 {
       margin-top: 0;
-      color: #003366;
+      color: var(--color-primario);
       margin-bottom: 1rem;
       font-size: 1.3rem;
       display: flex;
@@ -158,7 +188,7 @@
     .service h3 svg {
       width: 24px;
       height: 24px;
-      fill: #25D366;
+      fill: var(--color-secundario);
       flex-shrink: 0;
     }
     .service p {
@@ -173,23 +203,24 @@
       padding-bottom: 3rem;
     }
     .whatsapp {
-      background-color: #25D366;
-      color: white;
+      background-color: var(--color-secundario);
+      color: var(--color-blanco);
       padding: 1.1rem 2.2rem;
       border-radius: 50px;
       text-decoration: none;
       font-size: 1.3rem;
       display: inline-block;
       margin-top: 1.4rem;
-      box-shadow: 0 0 15px #25D366;
+      box-shadow: 0 0 15px var(--color-secundario);
       animation: pulse 2.5s infinite;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
       position: relative;
     }
     .whatsapp:hover,
     .whatsapp:focus {
-      box-shadow: 0 0 30px #1ebe5a, 0 0 45px #25d366;
+      box-shadow: 0 0 30px #1ebe5a, 0 0 45px var(--color-secundario);
       transform: scale(1.05);
+      outline: none;
     }
     /* Tooltip */
     .whatsapp[title]:hover::after {
@@ -198,8 +229,8 @@
       bottom: 110%;
       left: 50%;
       transform: translateX(-50%);
-      background: #25D366;
-      color: white;
+      background: var(--color-secundario);
+      color: var(--color-blanco);
       padding: 6px 12px;
       border-radius: 6px;
       white-space: nowrap;
@@ -214,17 +245,17 @@
     /* Animación pulso botón WhatsApp */
     @keyframes pulse {
       0%, 100% {
-        box-shadow: 0 0 15px #25D366;
+        box-shadow: 0 0 15px var(--color-secundario);
       }
       50% {
-        box-shadow: 0 0 30px #1ebe5a, 0 0 45px #25d366;
+        box-shadow: 0 0 30px #1ebe5a, 0 0 45px var(--color-secundario);
       }
     }
 
     /* Footer */
     footer {
-      background-color: #003366;
-      color: white;
+      background-color: var(--color-primario);
+      color: var(--color-blanco);
       padding: 2rem 1.5rem;
       text-align: center;
       font-size: 0.95rem;
@@ -240,7 +271,7 @@
       margin: 0.3rem 0;
     }
     footer a {
-      color: #25D366;
+      color: var(--color-secundario);
       text-decoration: none;
       font-weight: 600;
       margin: 0 0.8rem;
@@ -248,11 +279,16 @@
     }
     footer a:hover,
     footer a:focus {
-      color: #7fe8a9;
+      color: var(--color-secundario-claro);
+      outline: none;
+    }
+    footer a:focus-visible {
+      outline: 3px solid var(--color-secundario-claro);
+      outline-offset: 2px;
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       nav {
         display: none;
       }
@@ -265,12 +301,14 @@
         cursor: pointer;
         font-size: 1.8rem;
         user-select: none;
-        color: white;
+        color: var(--color-blanco);
+        background: none;
+        border: none;
       }
       nav.active {
         display: flex;
         flex-direction: column;
-        background-color: #003366;
+        background-color: var(--color-primario);
         position: absolute;
         top: 60px;
         right: 0;
@@ -299,14 +337,14 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background-color: #25D366;
-      color: white;
+      background-color: var(--color-secundario);
+      color: var(--color-blanco);
       border: none;
       padding: 0.9rem 1.2rem;
       border-radius: 50px;
       font-size: 1.5rem;
       cursor: pointer;
-      box-shadow: 0 0 15px #25D366;
+      box-shadow: 0 0 15px var(--color-secundario);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
@@ -318,11 +356,87 @@
     }
     #btnTop:hover,
     #btnTop:focus {
-      box-shadow: 0 0 30px #1ebe5a, 0 0 45px #25d366;
+      box-shadow: 0 0 30px #1ebe5a, 0 0 45px var(--color-secundario);
       transform: scale(1.1);
       outline: none;
     }
-    .about-container {
+    #btnTop:focus-visible {
+      outline: 3px solid #1ebe5a;
+      outline-offset: 2px;
+    }
+    form#contactForm {
+  margin-top: 1.8rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+form#contactForm div {
+  margin-bottom: 1.3rem;
+}
+
+form#contactForm label {
+  font-weight: 600;
+  color: var(--color-primario);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+form#contactForm input,
+form#contactForm textarea {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+}
+
+form#contactForm input:focus,
+form#contactForm textarea:focus {
+  outline: none;
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 5px var(--color-secundario);
+}
+
+form#contactForm button {
+  background-color: var(--color-secundario);
+  color: var(--color-blanco);
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px var(--color-secundario);
+}
+
+form#contactForm button:hover,
+form#contactForm button:focus {
+  background-color: #1ebe5a;
+  box-shadow: 0 0 25px #1ebe5a;
+  outline: none;
+}
+
+form#contactForm button:focus-visible {
+  outline: 3px solid #1ebe5a;
+  outline-offset: 3px;
+}
+
+/* Mensajes de error simple (opcional) */
+input:invalid,
+textarea:invalid {
+  border-color: #e55353;
+}
+
+input:invalid:focus,
+textarea:invalid:focus {
+  box-shadow: 0 0 8px #e55353;
+}
+.about-container {
   display: flex;
   gap: 2rem;
   align-items: center;
@@ -384,15 +498,26 @@
   }
 }
 
+
   </style>
 </head>
 <body>
 
   <header id="header">
     <div>
-      <img src="logo.png" alt="Logo NEMOC" />
+      <a href="#inicio" class="logo-link" aria-label="Ir al inicio">
+        <img src="logo.png" alt="Logo de NEMOC Ingeniería y Tecnología" />
+      </a>
     </div>
-    <div class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</div>
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="navMenu"
+    >
+      &#9776;
+    </button>
     <nav id="navMenu" role="navigation" aria-label="Menú principal">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
@@ -401,12 +526,13 @@
     </nav>
   </header>
 
-  <section class="hero" id="inicio" tabindex="-1" aria-label="Sección principal">
-    <h1>NEMOC INGENIERÍA Y TECNOLOGÍA</h1>
-    <p>Soluciones Multiservicios Integrales</p>
-  </section>
+  <main>
+    <section class="hero" id="inicio" tabindex="-1" aria-label="Sección principal">
+      <h1>NEMOC INGENIERÍA Y TECNOLOGÍA</h1>
+      <p>Soluciones Multiservicios Integrales</p>
+    </section>
 
-  <section class="section" id="servicios" tabindex="-1" aria-label="Servicios profesionales">
+      <section class="section" id="servicios" tabindex="-1" aria-label="Servicios profesionales">
     <h2>Servicios Profesionales</h2>
     <div class="services">
       <div class="service" tabindex="0">
@@ -512,8 +638,12 @@
 
     </div>
   </section>
+        <!-- Añade los demás servicios de manera similar con id único para aria-labelledby -->
+        <!-- ... -->
+      </div>
+    </section>
 
-  <section class="section" id="sobre-mi" tabindex="-1" aria-label="Sobre mí">
+    <section class="section" id="sobre-mi" tabindex="-1" aria-label="Sobre mí">
   <h2>Quienes Somos</h2>
   <div class="about-container">
     <div class="about-text">
@@ -539,20 +669,67 @@
         <li><strong>Trabajo en equipo:</strong> Colaboración para lograr objetivos comunes.</li>
       </ul>
     </div>
+    <div class="about-image">
+      <img src="equipo-nemoc.jpg" alt="Equipo profesional de NEMOC Ingeniería y Tecnología" />
+    </div>
+  </div>
+</section>
 
-  <section class="section contact" id="contacto" tabindex="-1" aria-label="Contacto">
-    <h2>Contáctame</h2>
-    <p>¿Interesado en nuestros servicios? ¡Hablemos por WhatsApp!</p>
-    <a
-      class="whatsapp"
-      href="https://wa.me/573185621097?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20profesionales.%20%C2%BFPodr%C3%ADa%20brindarme%20m%C3%A1s%20informaci%C3%B3n?"
-      target="_blank"
-      rel="noopener"
-      title="Haz clic para enviar un mensaje por WhatsApp"
-      >📱 Escríbeme por WhatsApp</a
-    >
-    <p>Email: nemoca1004@gmail.com | Tel: +57 318 562 1097</p>
-  </section>
+
+    <!-- Sección Contacto actualizada: -->
+<section class="section contact" id="contacto" tabindex="-1" aria-label="Contacto">
+  <h2>Contáctame</h2>
+  <p>¿Interesado en nuestros servicios? ¡Hablemos por WhatsApp o envíame un mensaje aquí!</p>
+  <a
+    class="whatsapp"
+    href="https://wa.me/573185621097?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20profesionales.%20%C2%BFPodr%C3%ADa%20brindarme%20m%C3%A1s%20informaci%C3%B3n?"
+    target="_blank"
+    rel="noopener"
+    title="Haz clic para enviar un mensaje por WhatsApp"
+    >📱 Escríbeme por WhatsApp</a
+  >
+
+  <form id="contactForm" aria-label="Formulario de contacto" novalidate>
+    <div>
+      <label for="name">Nombre completo *</label><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        aria-required="true"
+        placeholder="Tu nombre completo"
+      />
+    </div>
+    <div>
+      <label for="email">Correo electrónico *</label><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        aria-required="true"
+        placeholder="correo@ejemplo.com"
+      />
+    </div>
+    <div>
+      <label for="message">Mensaje *</label><br />
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        required
+        aria-required="true"
+        placeholder="Escribe tu mensaje aquí..."
+      ></textarea>
+    </div>
+    <button type="submit" aria-label="Enviar mensaje">Enviar mensaje</button>
+  </form>
+
+  <p>Email: <a href="mailto:nemoca1004@gmail.com">nemoca1004@gmail.com</a> | Tel: +57 318 562 1097</p>
+</section>
+
+  </main>
 
   <!-- Botón Volver Arriba -->
   <button id="btnTop" aria-label="Volver arriba" title="Volver al inicio">⬆️</button>
@@ -567,7 +744,13 @@
   </footer>
 
   <script>
-    // Animar secciones al hacer scroll
+    // Variables de elementos
+    const header = document.getElementById('header');
+    const btnTop = document.getElementById('btnTop');
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    // Función para revelar secciones al hacer scroll
     function revealSections() {
       const sections = document.querySelectorAll('.section, footer');
       const windowHeight = window.innerHeight;
@@ -578,40 +761,83 @@
         }
       });
     }
-    window.addEventListener('scroll', revealSections);
-    window.addEventListener('load', revealSections);
 
-    // Header sombra al hacer scroll
-    const header = document.getElementById('header');
+    // Evento scroll combinado para optimizar
     window.addEventListener('scroll', () => {
+      revealSections();
+
+      // Header sombra
       if(window.scrollY > 20) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
-    });
 
-    // Menu toggle para móvil
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    // Botón Volver Arriba
-    const btnTop = document.getElementById('btnTop');
-    window.addEventListener('scroll', () => {
+      // Mostrar botón volver arriba
       if(window.scrollY > 300) {
         btnTop.classList.add('show');
       } else {
         btnTop.classList.remove('show');
       }
     });
+
+    // Revelar secciones al cargar la página
+    window.addEventListener('load', revealSections);
+
+    // Botón volver arriba
     btnTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      btnTop.blur();
     });
+
+    // Toggle menú hamburguesa
+    menuToggle.addEventListener('click', () => {
+      const expanded = navMenu.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', expanded);
+      // Cambiar icono hamburguesa a X
+      menuToggle.innerHTML = expanded ? '&#10005;' : '&#9776;';
+    });
+
+    // Cerrar menú al seleccionar enlace (mejora UX móvil)
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', false);
+        menuToggle.innerHTML = '&#9776;';
+      });
+    });
+
+    // Mejora: estilos visibles para foco en elementos con tabindex
+    // (esto ya está manejado por CSS :focus-visible)
+// Formulario contacto
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Validar formulario (HTML5 validación nativa cubre mayoría)
+  if (!contactForm.checkValidity()) {
+    // Mostrar mensaje por defecto del navegador
+    contactForm.reportValidity();
+    return;
+  }
+
+  // Obtener datos
+  const name = contactForm.name.value.trim();
+  const email = contactForm.email.value.trim();
+  const message = contactForm.message.value.trim();
+
+  // Aquí podrías enviar datos a backend o servicio externo
+  // Por ahora, solo mostrar alerta confirmando envío
+  alert(`Gracias, ${name}. Tu mensaje ha sido recibido.\nPronto nos pondremos en contacto contigo.`);
+
+  // Resetear formulario
+  contactForm.reset();
+
+  // Volver foco al nombre para mejor UX
+  contactForm.name.focus();
+});
+
   </script>
 </body>
 </html>
-
-
