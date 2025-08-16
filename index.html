@@ -693,46 +693,7 @@ textarea:invalid:focus {
     target="_blank"
     rel="noopener"
     title="Haz clic para enviar un mensaje por WhatsApp"
-    >📱 Escríbeme por WhatsApp</a
-  >
-
- <form id="contact-form">
-  <input type="text" name="nombre" placeholder="Tu nombre" required>
-  <input type="email" name="email" placeholder="Tu correo" required>
-  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-  <button type="submit">Enviar</button>
-</form>
-
-
-const scriptURL = "https://script.google.com/macros/s/AKfycbz7fLjyl5GKd6PZ3cL4N8XZDo2ut2FYBMgKSH-DIUcIjAbRQC1SzWv1DXsUMg7OVfjmmg/exec";
-const form = document.getElementById("contact-form");
-
-form.addEventListener("submit", e => {
-  e.preventDefault();
-
-  const data = {
-    nombre: form.nombre.value,
-    email: form.email.value,
-    mensaje: form.mensaje.value
-  };
-
-  fetch(scriptURL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  })
-  .then(response => response.json())
-  .then(data => {
-    if(data.result === "success") {
-      alert("✅ Tu mensaje fue enviado con éxito");
-      form.reset();
-    } else {
-      alert("❌ Error al enviar: " + data.error);
-    }
-  })
-  .catch(err => alert("❌ Error de conexión: " + err.message));
-});
-
+    >📱 Escríbeme por WhatsApp</a>
 
   <p>Email: <a href="mailto:nemoca1004@gmail.com">nemoca1004@gmail.com</a> | Tel: +57 318 562 1097</p>
 </section>
@@ -849,6 +810,7 @@ contactForm.addEventListener('submit', (e) => {
   </script>
 </body>
 </html>
+
 
 
 
