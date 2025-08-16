@@ -696,15 +696,15 @@ textarea:invalid:focus {
     >📱 Escríbeme por WhatsApp</a
   >
 
-  <form id="contact-form">
+ <form id="contact-form">
   <input type="text" name="nombre" placeholder="Tu nombre" required>
   <input type="email" name="email" placeholder="Tu correo" required>
   <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
   <button type="submit">Enviar</button>
 </form>
 
-<script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbz7fLjyl5GKd6PZ3cL4N8XZDo2ut2FYBMgKSH-DIUcIjAbRQC1SzWv1DXsUMg7OVfjmmg/exec"; // pega la URL de tu app web
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbz7fLjyl5GKd6PZ3cL4N8XZDo2ut2FYBMgKSH-DIUcIjAbRQC1SzWv1DXsUMg7OVfjmmg/exec";
 const form = document.getElementById("contact-form");
 
 form.addEventListener("submit", e => {
@@ -732,7 +732,6 @@ form.addEventListener("submit", e => {
   })
   .catch(err => alert("❌ Error de conexión: " + err.message));
 });
-</script>
 
 
   <p>Email: <a href="mailto:nemoca1004@gmail.com">nemoca1004@gmail.com</a> | Tel: +57 318 562 1097</p>
@@ -850,6 +849,7 @@ contactForm.addEventListener('submit', (e) => {
   </script>
 </body>
 </html>
+
 
 
 
