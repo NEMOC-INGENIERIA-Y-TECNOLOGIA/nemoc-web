@@ -704,32 +704,34 @@ textarea:invalid:focus {
 </form>
 
 <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwhLBa0LCXiJLqGqh9a19-D2QEtAjvh1GKFU499I1uMvTWX2WNwQMCTPh0jX1yEuhnZbw/exec";
-  const form = document.getElementById("contact-form");
+const scriptURL = "https://script.google.com/macros/s/AKfycbz7fLjyl5GKd6PZ3cL4N8XZDo2ut2FYBMgKSH-DIUcIjAbRQC1SzWv1DXsUMg7OVfjmmg/exec"; // pega la URL de tu app web
+const form = document.getElementById("contact-form");
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
+form.addEventListener("submit", e => {
+  e.preventDefault();
 
-    const data = {
-      nombre: form.nombre.value,
-      email: form.email.value,
-      mensaje: form.mensaje.value
-    };
+  const data = {
+    nombre: form.nombre.value,
+    email: form.email.value,
+    mensaje: form.mensaje.value
+  };
 
-    fetch(scriptURL, {
-      method: "POST",
-      mode: "no-cors", // evita bloqueos CORS, pero no podrás leer respuesta
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    })
-    .then(() => {
+  fetch(scriptURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if(data.result === "success") {
       alert("✅ Tu mensaje fue enviado con éxito");
       form.reset();
-    })
-    .catch(err => {
-      alert("❌ Error al enviar el mensaje: " + err.message);
-    });
-  });
+    } else {
+      alert("❌ Error al enviar: " + data.error);
+    }
+  })
+  .catch(err => alert("❌ Error de conexión: " + err.message));
+});
 </script>
 
 
@@ -848,6 +850,7 @@ contactForm.addEventListener('submit', (e) => {
   </script>
 </body>
 </html>
+
 
 
 
