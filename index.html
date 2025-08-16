@@ -696,42 +696,40 @@ textarea:invalid:focus {
     >📱 Escríbeme por WhatsApp</a
   >
 
-  <form id="contactForm" aria-label="Formulario de contacto" novalidate>
-    <div>
-      <label for="name">Nombre completo *</label><br />
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        aria-required="true"
-        placeholder="Tu nombre completo"
-      />
-    </div>
-    <div>
-      <label for="email">Correo electrónico *</label><br />
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        aria-required="true"
-        placeholder="correo@ejemplo.com"
-      />
-    </div>
-    <div>
-      <label for="message">Mensaje *</label><br />
-      <textarea
-        id="message"
-        name="message"
-        rows="4"
-        required
-        aria-required="true"
-        placeholder="Escribe tu mensaje aquí..."
-      ></textarea>
-    </div>
-    <button type="submit" aria-label="Enviar mensaje">Enviar mensaje</button>
-  </form>
+  <form id="contactForm">
+  <input type="text" name="nombre" placeholder="Tu nombre" required>
+  <input type="email" name="email" placeholder="Tu correo" required>
+  <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
+  <button type="submit">Enviar Mensaje</button>
+</form>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = {
+      nombre: this.nombre.value,
+      email: this.email.value,
+      mensaje: this.mensaje.value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbwSeT87QCw_J-FWLuPmJge0lCXI2P85cqT7PVgIoMLrjSm5ziUUwIGk7jTGY610AG6Hfw/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(res.status === "success") {
+        alert("✅ Tu mensaje fue enviado con éxito");
+        this.reset();
+      } else {
+        alert("⚠️ Hubo un error al enviar tu mensaje");
+      }
+    })
+    .catch(err => alert("❌ Error: " + err));
+  });
+</script>
+
 
   <p>Email: <a href="mailto:nemoca1004@gmail.com">nemoca1004@gmail.com</a> | Tel: +57 318 562 1097</p>
 </section>
@@ -848,6 +846,7 @@ contactForm.addEventListener('submit', (e) => {
   </script>
 </body>
 </html>
+
 
 
 
