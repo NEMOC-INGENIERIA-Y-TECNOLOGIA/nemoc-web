@@ -776,40 +776,10 @@ textarea:invalid:focus {
       });
     });
 
-    // Mejora: estilos visibles para foco en elementos con tabindex
-    // (esto ya está manejado por CSS :focus-visible)
-// Formulario contacto
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  // Validar formulario (HTML5 validación nativa cubre mayoría)
-  if (!contactForm.checkValidity()) {
-    // Mostrar mensaje por defecto del navegador
-    contactForm.reportValidity();
-    return;
-  }
-
-  // Obtener datos
-  const name = contactForm.name.value.trim();
-  const email = contactForm.email.value.trim();
-  const message = contactForm.message.value.trim();
-
-  // Aquí podrías enviar datos a backend o servicio externo
-  // Por ahora, solo mostrar alerta confirmando envío
-  alert(`Gracias, ${name}. Tu mensaje ha sido recibido.\nPronto nos pondremos en contacto contigo.`);
-
-  // Resetear formulario
-  contactForm.reset();
-
-  // Volver foco al nombre para mejor UX
-  contactForm.name.focus();
-});
-
   </script>
 </body>
 </html>
+
 
 
 
